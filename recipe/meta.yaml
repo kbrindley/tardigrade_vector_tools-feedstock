@@ -10,7 +10,7 @@ source:
   sha256: ba24dcf6d1cf60cf3e851629588334556aef16c372d3cb634aaed69d2bba7e36
 
 build:
-  number: 0
+  number: 1
   script_env:
     - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
   script:
@@ -39,7 +39,6 @@ requirements:
     - libboost-python-devel >=1.82
     - doxygen
   run:
-    - python
     - eigen >=3.3.7
     - tardigrade_error_tools >=0.9.7
 
@@ -48,7 +47,7 @@ test:
     - {{ compiler('cxx') }}
     - make
     - cmake >=3.18
-    - boost >=1.59
+    - libboost-python-devel >=1.82
     - doxygen
     - sphinx >=3.0.4
     - tardigrade_error_tools >=0.9.7
