@@ -16,7 +16,7 @@ build:
   script:
     - set -x
     # Build and install c++ libraries
-    - cmake -S . -B build -DCMAKE_BUILD_TYPE=Release ${CMAKE_ARGS}
+    - cmake -S . -B build -DCMAKE_BUILD_TYPE=Release ${CMAKE_ARGS}  # ``${CMAKE_ARGS}`` required by conda-forge recipe
     - cmake --install build --prefix ${PREFIX}
   skip: true  # [win]
 
@@ -24,10 +24,11 @@ requirements:
   build:
     - python
     - {{ compiler('c') }}  # TODO: Remove when upstream project CMakeLists.txt file sets ``LANGUAGE CXX``
-    - {{ stdlib('c') }}
+    - {{ stdlib('c') }}  # Required by conda-forge recipe, but not upstream recipe
     - {{ compiler('cxx') }}
     - make
     - cmake >=3.30
+    - tardigrade_error_tools >=0.7
     - breathe >=4.3.0
     - doxygen
     - libboost-python-devel >=1.82
@@ -53,14 +54,12 @@ test:
     - libboost-python-devel >=1.82
     - doxygen
     - sphinx >=3.0.4
-    - tardigrade_error_tools >=0.9.7
   source_files:
     - CMakeLists.txt
     - src/cpp/tests/CMakeLists.txt
     - src/cpp/tests/test_tardigrade_vector_tools.cpp
     - src/cpp/tests/test_tardigrade_interp_ndCartesian.cpp
   commands:
-    - echo running tests
     - set -x
     - cmake -S . -B build -DCMAKE_BUILD_TYPE=conda-test -DCMAKE_INSTALL_LIBDIR=lib
     - cmake --build build --verbose --parallel 4
@@ -72,7 +71,7 @@ about:
   license_file: LICENSE
   summary: 'A collection of tools for vector manipulation'
   description: |
-    tardigrade_vector_tools A collection of tools for C++ that make interfacing with vectors easier
+    tardigrade-vector-tools A collection of tools for C++ that make interfacing with vectors easier
     and less prone to error. These tools also allow the user access to the powerful Eigen library which provides matrix
     utilities in such a way that Eigen does not need to be used explicitly in the user's code.
   dev_url: https://github.com/UCBoulder/tardigrade_vector_tools
