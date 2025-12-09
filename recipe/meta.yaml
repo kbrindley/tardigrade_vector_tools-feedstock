@@ -36,7 +36,6 @@ requirements:
     - sphinx >=3.0.4
     - sphinx_rtd_theme >=0.4.3
     - sphinxcontrib-bibtex
-    - tardigrade_error_tools >=0.9.7
   host:
     - setuptools_scm >=6.2  # TODO: Remove when upstream project CMakeLists.txt file prefers $BUILD_PREFIX/python
     - eigen >=3.3.7
