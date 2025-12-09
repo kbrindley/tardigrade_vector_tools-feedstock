@@ -38,6 +38,7 @@ requirements:
     - sphinxcontrib-bibtex
     - tardigrade_error_tools >=0.9.7
   host:
+    - setuptools_scm >=6.2
     - eigen >=3.3.7
     - tardigrade_error_tools >=0.9.7
   run:
