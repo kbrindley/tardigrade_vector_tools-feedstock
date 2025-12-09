@@ -30,6 +30,8 @@ requirements:
     - cmake >=3.18
     - doxygen
     - tardigrade_error_tools >=0.9.7
+    - setuptools >=62
+    - setuptools_scm >=6.2
   host:
     - breathe >=4.3.0
     - sphinx >=3.0.4
