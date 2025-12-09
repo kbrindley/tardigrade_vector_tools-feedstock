@@ -28,7 +28,6 @@ requirements:
     - {{ compiler('cxx') }}
     - make
     - cmake >=3.30
-    - tardigrade_error_tools >=0.7
     - breathe >=4.3.0
     - doxygen
     - libboost-python-devel >=1.82
